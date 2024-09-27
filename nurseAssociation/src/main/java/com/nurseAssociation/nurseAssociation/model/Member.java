@@ -2,15 +2,13 @@ package com.nurseAssociation.nurseAssociation.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
-@MappedSuperclass
+@Entity
 public class Member implements Serializable {
 
     @Id
@@ -31,7 +29,7 @@ public class Member implements Serializable {
 
 
     public enum Status {
-        ACTIVO,
-        CADUCADO
+        ACTIVE,
+        LAPSED
     }
 }

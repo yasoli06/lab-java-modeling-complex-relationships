@@ -24,4 +24,30 @@ public class ChapterService {
     public void deleteChapter(Long id) {
         chapterRepository.deleteById(id);
     }
+
+    public Chapter createChapter(Chapter chapter) {
+        return chapterRepository.save(chapter);
+    }
+
+    public Chapter updateChapter(Long id, Chapter chapterDetails) {
+        // Buscar el capítulo por su ID
+        Optional<Chapter> existingChapterOptional = chapterRepository.findById(id);
+
+        if (existingChapterOptional.isPresent()) {
+            Chapter existingChapter = existingChapterOptional.get();
+
+            // Actualizar los campos necesarios del capítulo
+            existingChapter.setName(chapterDetails.getName());
+            existingChapter.setDistrict(chapterDetails.getDistrict());
+            existingChapter.setPresident(chapterDetails.getPresident());
+            existingChapter.setMembers(chapterDetails.getMembers());
+
+            // Guardar los cambios en la base de datos
+            return chapterRepository.save(existingChapter);
+        } else {
+            // Si el capítulo no existe, podrías lanzar una excepción o manejar el error
+            // Aquí podríamos lanzar una excepción o devolver null.
+            return null;
+        }
+    }
 }

@@ -28,13 +28,13 @@ public class ChapterController {
 
     @PostMapping
     public Chapter createChapter(@RequestBody Chapter chapter) {
-        return chapterService.saveChapter(chapter);
+        return chapterService.createChapter(chapter);
     }
 
     @PutMapping("/{id}")
     public Chapter updateChapter(@PathVariable Long id, @RequestBody Chapter chapter) {
         chapter.setId(id); // Para asegurarse de que estamos actualizando
-        return chapterService.saveChapter(chapter);
+        return chapterService.updateChapter(id, chapter);
     }
     @DeleteMapping("/{id}")
     public void deleteChapter(@PathVariable Long id) {

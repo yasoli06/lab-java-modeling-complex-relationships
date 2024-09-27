@@ -9,10 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Entity
-public class Chapter extends Member{
+public class Chapter{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

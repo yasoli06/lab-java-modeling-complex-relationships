@@ -2,14 +2,16 @@ package com.nurseAssociation.nurseAssociation.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Event {
+@NoArgsConstructor
+@MappedSuperclass
+public class Event implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +22,7 @@ public class Event {
     private String location;
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany
     @JoinColumn(name = "event_id")
     private List<Guest> guests;
 
